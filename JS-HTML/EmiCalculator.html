@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Calculator</title>
+    <style>
+        #tbl{
+            border: solid;
+            border-radius: 15px;
+            margin: auto;
+            padding: 10px;
+            font-size: large;
+        }
+
+        #btn{
+            margin: 10px;
+            border-radius: 15px;
+            padding: 8px;
+            font-size: medium;
+            background-color: bisque;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        var loan = 0;
+        var roi = 0;
+        var yrs = 0;
+        function compute() {
+            loan = parseFloat(document.getElementById("loan").value);
+            roi = parseFloat(document.getElementById("roi").value);
+            roi = roi / (12 * 100); //in fraction
+            yrs = parseFloat(document.getElementById("yrs").value);
+            months = yrs * 12;
+
+            document.getElementById("pay").value = montlyPay();
+            document.getElementById("totpay").value = totalPay();
+            document.getElementById("totin").value = totalInterest();
+        }
+
+        function montlyPay() {
+            var num = loan * roi * Math.pow((1 + roi), months);
+            var den = Math.pow((1 + roi), months) - 1;
+            var annualPay = num / den;
+            return (annualPay).toFixed(0); //per month
+        }
+
+        function totalPay() {
+            return montlyPay() * months;
+        }
+        function totalInterest() {
+            return totalPay() - loan;
+        }
+    </script>
+</head>
+
+<body>
+
+        <table id="tbl">
+            <tbody>
+                <tr>
+                    <th colspan="2">Enter Loan Information</th>
+
+                </tr>
+                <tr>
+                    <td>1) Amount of the loan(any currency)</td>
+                    <td><input type="number" name="loan" id="loan" max="1500000" autofocus></td>
+                </tr>
+                <tr>
+                    <td>2) Annual percentage rate of interest</td>
+                    <td><input type="number" name="roi" id="roi"></td>
+                </tr>
+                <tr>
+                    <td>3) Repayment period in years</td>
+                    <td><input type="number" name="yrs" id="yrs" min="7" max="15" size="500"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <button type="button" name="btn" id="btn" onclick="compute()">Compute</button>
+                    </td>
+                </tr>
+                <tr>
+                    <th colspan="2">Payment Information</th>
+                </tr>
+                <tr>
+                    <td>4) Your monthly payment will be</td>
+                    <td><input type="number" name="pay" id="pay" readonly></td>
+                </tr>
+                <tr>
+                    <td>5) Your total payment will be </td>
+                    <td><input type="number" name="totpay" id="totpay" readonly></td>
+                </tr>
+                <tr>
+                    <td>6) Yout total interest payment will be</td>
+                    <td><input type="number" name="totin" id="totin" readonly></td>
+                </tr>
+            </tbody>
+
+
+        </table>
+
+</body>
+
+</html>

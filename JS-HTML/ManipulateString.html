@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main {
+            border: solid;
+            height: fit-content;
+            width: fit-content;
+            padding: 20px;
+            margin: auto;
+        }
+
+        #answer {
+            border: 0ch;
+            margin: auto;
+        }
+    </style>
+    <script>
+        var str = "";
+        var substr = "";
+        var repstr = "";
+
+        function strOp() {
+            str = document.getElementById("str").value;
+            substr = document.getElementById("substr").value;
+            repstr = document.getElementById("rep").value;
+            var ans = "";
+            var rad = document.getElementsByName("rad");
+
+            if (rad[0].checked) {
+                ans = subString();
+            }
+            else if (rad[1].checked) {
+                ans = "To upper case : " + toUpper();
+            }
+            else if (rad[2].checked) {
+                ans = "To Lower case : " + toLower();
+            }
+            else if (rad[3].checked) {
+                ans = "After removing spacces : " + removeSpace();
+            }
+            else if (rad[4].checked) {
+                //                alert("in 3");
+                ans = "Concated string : " + concateStr();
+            }
+            else if (rad[5].checked) {
+                ans = "After replacing : " + replaceStr();
+            }
+            else {
+                ans = "Invalid input!!!";
+            }
+
+            disResult(ans);
+        }
+
+        //SubString
+        function subString() {
+            if (str.match(substr)) {
+                return "Sub string is PRESENT in given string";
+            }
+            return "Sub string is NOT PRESENT in given string";
+        }
+
+        //toUpper
+        function toUpper() {
+            return str.toUpperCase();
+        }
+
+        //toLower
+        function toLower() {
+            return str.toLowerCase();
+        }
+
+        //Remove all space from string
+        function removeSpace() {
+            var newStr = "";
+            var strarr = str.split(" ");
+
+            for (var s of strarr) {
+                newStr += s;
+            }
+            return newStr;
+        }
+
+        //Concate String
+        function concateStr() {
+            return str + substr;
+        }
+
+        //replace string
+        function replaceStr() {
+            return str.replace(substr, repstr);
+        }
+
+        function disResult(ans) {
+            document.getElementById("answer").innerHTML = ans;
+        }
+        function clearDisplay() {
+            document.getElementById("answer").innerHTML = "";
+        }
+
+
+    </script>
+</head>
+
+<body>
+    <form>
+        <fieldset id="main">
+            <legend>String Operation</legend>
+            Enter String : <input type="text" id="str" name="str" autofocus>
+            <br><br>
+            Enter Sub String : <input type="text" id="substr" name="substr">
+            <br><br>
+            Replace with String : <input type="text" name="rep" id="rep">
+            <br><br>
+
+            <label for="rad"></label>
+            <input type="radio" name="rad" id="r1"><label for="r1">Search Substring</label> &nbsp;
+            <input type="radio" name="rad" id="r2"> <label for="r2">To upper case</label>&nbsp;
+            <input type="radio" name="rad" id="r3"> <label for="r3">To Lower case</label>&nbsp;
+            <input type="radio" name="rad" id="r4"><label for="r4"> Trim spaces</label> &nbsp;
+            <input type="radio" name="rad" id="r5"> <label for="r5">Concatenate</label> &nbsp;
+            <input type="radio" name="rad" id="r6"> <label for="r6">Replace </label>&nbsp;
+            <br><br>
+            <button type="button" id="btn" name="btn" onclick="strOp()">Submit Query</button>&nbsp;&nbsp;
+            <button type="reset" id="reset" onclick="clearDisplay()">Reset</button>
+            <br><br>
+            <div id="answer"></div>
+        </fieldset>
+    </form>
+</body>
+
+</html>
