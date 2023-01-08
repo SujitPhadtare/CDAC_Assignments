@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Calculator</title>
+    <style>
+        h1 {
+            text-align: center;
+        }
+
+        .container {
+            border: solid 1px;
+            height: fit-content;
+            width: fit-content;
+            padding: 20px;
+            margin: auto;
+            background-color: antiquewhite;
+            text-align: center;
+        }
+
+        .btn {
+            font-size: large;
+            background-color: aliceblue;
+            padding: 5px;
+            cursor: pointer;
+        }
+
+        .border-radius {
+            border-radius: 5px;
+        }
+
+        .font-size {
+            font-size: x-large;
+        }
+    </style>
+    <script>
+        function calculateAge() {
+            var bdate = new Date(document.getElementById("bdate").value);
+            var curdate = new Date(document.getElementById("curdate").value);
+            var today = new Date();
+            var valid = today.getTime() - bdate.getTime();
+            var total_time = curdate.getTime() - bdate.getTime();
+
+            var one_day = 1000 * 60 * 60 * 24;
+
+            if (!isNaN(bdate) && !isNaN(curdate) && valid > 0 && total_time > 0) {
+
+                var total_days = total_time / one_day;
+
+                var total_yrs = parseInt(total_days / 365);
+                var rem_days = total_days % 365;
+                var add_month = parseInt(rem_days / 30); //assume 30 days in month
+
+                var str = "<br>Your Age is<br>" + total_yrs + " years " + add_month + " months";
+                document.getElementById("result").innerHTML = str;
+                return;
+            }
+            alert("Invalid Input");
+            return;
+        }
+    </script>
+</head>
+
+<body class="body">
+    <h1>Age Calculator</h1>
+    <div class="container border-radius font-size">
+        Enter BirthDate : <input type="date" class="font-size" id="bdate" name="bdate"><br><br>
+        Age at Date : <input type="date" class="font-size" id="curdate" name="curdate"><br><br>
+        <button type="button" id="btn" class="btn border-radius" onclick="calculateAge()">Calculate Age</button>
+        <br>
+        <div id="result"></div>
+    </div>
+</body>
+
+</html>
