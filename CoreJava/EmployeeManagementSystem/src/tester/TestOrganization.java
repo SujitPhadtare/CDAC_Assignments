@@ -22,7 +22,7 @@ public class TestOrganization {
 			while (choice != 10) {
 				// Options Menu
 				System.out.println(
-						"\n1. Hire Manager \n2. Hire Worker \n3. Display Employee Details \n4. Update Basic Salary \n10. Exit");
+						"\n1. Hire Manager \n2. Hire Worker \n3. Display Employee Details \n4. Update Basic Salary \n5. Fire An Employee \n10. Exit");
 				System.out.println("Enter Your Choice : ");
 				choice = sc.nextInt();
 try{
@@ -96,9 +96,6 @@ try{
 					emp[index - 1] = null;
 					index--;
 					break;
-//				case 6:
-//					
-//					break;
 				case 10:
 					System.out.println("Exit Selected !!");
 					break;
