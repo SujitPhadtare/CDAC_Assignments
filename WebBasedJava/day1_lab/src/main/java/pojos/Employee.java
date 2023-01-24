@@ -34,6 +34,18 @@ public class Employee {
 		this.dob = dob;
 		this.isPermanent = isPermanent;
 	}
+	
+	
+
+	public Employee(Long empId, String firstName, String lastName, double salary) {
+		super();
+		this.empId = empId;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.salary = salary;
+	}
+
+
 
 	public Employee() {
 		super();

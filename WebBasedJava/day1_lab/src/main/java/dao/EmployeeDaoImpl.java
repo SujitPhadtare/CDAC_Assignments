@@ -4,6 +4,8 @@ import pojos.Employee;
 import org.hibernate.*;
 import static utils.HibernateUtils.getFactory;
 
+import java.util.List;
+
 public class EmployeeDaoImpl implements EmployeeDao {
 
 	@Override
@@ -33,6 +35,52 @@ public class EmployeeDaoImpl implements EmployeeDao {
 			throw e;
 		}
 		return msg;
+	}
+
+	@Override
+	public List<Employee> getEmpbySal(double sal) {
+		List<Employee> emps = null;
+
+		String jpql = "select e from Employee e where e.salary > :sal";
+
+		Session session = getFactory().getCurrentSession();
+
+		Transaction tx = session.beginTransaction();
+
+		try {
+			emps = session.createQuery(jpql, Employee.class).setParameter("sal", sal).getResultList();
+			tx.commit();
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+		}
+
+		return emps;
+	}
+
+	@Override
+	public List<Employee> getAllEmployees() {
+		List<Employee> emps = null;
+		String jpql = "select e from Employee e";
+
+		Session session = getFactory().getCurrentSession();
+
+		Transaction tx = session.beginTransaction();
+
+		try {
+			emps = session.createQuery(jpql, Employee.class).getResultList();
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+		}
+
+		return emps;
+	}
+
+	@Override
+	public List<Employee> getPermanentEmps() {
+		List<Employee> emps = null;
+		String jpql = "select new pojos.Employee(empId,firstName,lastName,salary) from Employee e where e.isPermanent = true";
+		
+		return null;
 	}
 
 }

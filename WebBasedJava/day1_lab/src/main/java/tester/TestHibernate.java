@@ -10,7 +10,7 @@ public class TestHibernate {
 		// TODO Auto-generated method stub
 
 		try (SessionFactory sf = getFactory()) { //triggers class loading n static init block
-			System.out.println("hibernate up n running !!!!!! \n\n");
+			System.out.println("hibernate up n running !!!!!!");
 			
 			
 		} catch (Exception e) {

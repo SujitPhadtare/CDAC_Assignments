@@ -1,0 +1,26 @@
+sujit phadtare RND 50000 2021-12-12 true
+Shikha shrivastav finance 10000 2022-12-12 false
+Mohak Muskan HR 20000 2018-01-21 true
+Rohan Dehankar Billing 30000 2010-12-12 false
+
+
+
+
+	@Override
+	public List<Employee> getEmpbySal(double sal) {
+		List<Employee> emps = null;
+
+		String jpql = "";
+
+		Session session = getFactory().getCurrentSession();
+
+		Transaction tx = session.beginTransaction();
+
+		try {
+			tx.commit();
+		} catch (RuntimeException e) {
+			e.printStackTrace();
+		}
+
+		return null;
+	}
