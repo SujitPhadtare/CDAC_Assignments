@@ -1,10 +1,10 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.iacsd</groupId>
-  <artifactId>day1_lab</artifactId>
+  <artifactId>day5_lab</artifactId>
   <version>0.0.1-SNAPSHOT</version>
-  <name>day1_lab</name>
-  <description>first hibernate project</description>
+  <name>day5_lab</name>
+  <description>Student Management System E-R</description>
   	<build>
 		<plugins>
 			<plugin>
@@ -17,7 +17,7 @@
 				</configuration>
 			</plugin>
 		</plugins>
-		<finalName>day1_lab</finalName>
+		<finalName>day5_lab</finalName>
 
 	</build>
 	<dependencies>
